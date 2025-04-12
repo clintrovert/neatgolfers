@@ -55,6 +55,9 @@ function normalize(tournament: TournamentData): NormalizedResponse {
       if (matched) {
         if (matched.pos.includes('T')) {
           matched.posint = parseInt(matched.pos.replace('T', ''))
+        } else if (matched.pos == "") {
+          matched.posint = 75
+          matched.pos = "75"
         } else {
           matched.posint = parseInt(matched.pos)
         }
