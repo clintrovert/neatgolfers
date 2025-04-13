@@ -51,7 +51,7 @@ export function LeaderboardAverage({ data }: LeaderboardAverageProps) {
             <TableHeader>
               <TableRow>
                 <TableHead>NEATBOY</TableHead>
-                <TableHead className="text-right">AVERAGE POS</TableHead>
+                <TableHead className="text-right">AVERAGE POS (MC=75)</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -69,6 +69,7 @@ export function LeaderboardAverage({ data }: LeaderboardAverageProps) {
         </div>
       </CardContent>
     </Card>
+
   )
 }
 
@@ -93,7 +94,10 @@ export class LeaderboardAverageResult {
 
     const names = [this.first, this.second, this.third, this.fourth, this.fifth, this.sixth].sort(function(a, b) {
       return a - b;})
-    return names.join(", ")
+    let result = names.join(", ")
+    // if result contains 75, put in "missed cut"
+    result = result.replaceAll("75", "MC")
+    return result
   }
 }
 
